@@ -1,0 +1,20 @@
+CREATE TABLE IF NOT EXSTS propriétaire(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    nom VARCHAR(255),
+    prenom VARCHAR(255),
+    adresse TEXT,
+    telephone VARCHAR(255)
+);
+
+CREATE TABLE IF NOT EXISTS bien(
+id INTEGER PRIMARY KEY AUTOINCREMENT,
+taille SMALLINT,
+adresse TEXT,
+prix INTEGER,
+id_bail INTERGER,
+id_bien INTEGER,
+FOREIGN KEY (id_bail) REFERENCES bail(id),
+FOREIGN KEY (id_bien) REFERENCES bien(id)
+);
+
+CREATE TABLE
