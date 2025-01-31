@@ -3,7 +3,7 @@ CREATE TABLE IF NOT EXSTS propriétaire(
     nom VARCHAR(255),
     prenom VARCHAR(255),
     adresse TEXT,
-    telephone VARCHAR(255)
+    telephone SMALLINT
 );
 
 CREATE TABLE IF NOT EXISTS bien(
@@ -17,4 +17,27 @@ FOREIGN KEY (id_bail) REFERENCES bail(id),
 FOREIGN KEY (id_bien) REFERENCES bien(id)
 );
 
-CREATE TABLE
+CREATE TABLE IF NOT EXISTS bien_contrat(
+id_contrat INTEGER PRIMARY KEY AUTOINCREMENT,
+date_debut DATE,
+date_fin DATE
+pourcentage REAL,
+id_bien INTEGER,
+FOREIGN KEY (id_bien) REFERENCES bien(id)
+);
+
+CREATE TABLE IF NOT EXISTS bail(
+id INTEGET PRIMARY KEY AUTOINCREMENT,
+date_debut DATE,
+date_fin DATE
+);
+
+CREATE TABLE IF NOT EXISTS locataire(
+id INTEGER PRIMARY KEY AUTOINCREMENT,
+nom VARCHAR(255),
+prenom VARCHAR(255),
+adresse TEXT,
+telephone SMALLINT,
+id_bail,
+FOREIGN KEY (id_bail) REFERENCES bail(id)
+);
